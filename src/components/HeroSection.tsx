@@ -58,7 +58,7 @@ const HeroSection: React.FC = () => {
               View My Work
             </Button>
 
-            <a href="https://neerajs.web.app/resume.pdf">
+            <a href="resume.pdf">
               <Button
                 variant="outline"
                 size="lg"
