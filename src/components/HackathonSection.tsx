@@ -13,21 +13,21 @@ const hackathons: Hackathon[] = [
     id: 3,
     title: "Agri-thon",
     description: "Won 1st place with Agrometrics, a Flutter-built bilingual app that helps farmers calculate precise fertilizer dosage.",
-    image: "/assets/3.jpeg",
+    image: "public/assets/3.jpeg",
   },
   {
     id: 2,
     title: "HackWars",
     description:
       "Runner-Up for our AI Therapist website offering voice and 3D avatar support for mental health. Won ₹25,000 cash prize from VIT. Gained StartupTN support, and presented to IBM and MeitY delegates.",
-    image: "/assets/1.jpeg",
+    image: "public/assets/1.jpeg",
   },
   {
     id: 1,
     title: "Pixels and Paths",
     description:
       "Created an app UI using Figma and Photoshop that was awarded 2nd best design — received goodies and recognition.",
-    image: "/assets/2.jpeg",
+    image: "public/assets/2.jpeg",
   },
 ];
 
