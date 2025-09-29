@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nubra GTM Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- ===== Hero Section ===== -->
+  <header id="hero">
+    <div class="hero-content">
+      <h1>Nubra GTM Market Strategy</h1>
+      <p>Interactive dashboards to explore adoption, funnel performance, and financial outcomes.</p>
+      <a href="#calculators" class="cta-button">Explore Calculators</a>
+    </div>
+  </header>
+
+  <!-- ===== Main Content ===== -->
+  <main id="calculators">
+    <!-- Inputs Section -->
+    <section id="inputs">
+      <h2>Assumptions</h2>
+      <div class="inputs-grid">
+        <div class="input-group">
+          <label>Total Engineers in Country</label>
+          <input type="number" id="engineers" value="2000000">
+        </div>
+        <div class="input-group">
+          <label>Target Adoption % (Year 1)</label>
+          <input type="number" id="adoption" value="5">
+        </div>
+        <div class="input-group">
+          <label>Referral Multiplier</label>
+          <input type="number" id="referral" value="1.2" step="0.1">
+        </div>
+        <div class="input-group">
+          <label>Awareness → Registration %</label>
+          <input type="number" id="conv1" value="10">
+        </div>
+        <div class="input-group">
+          <label>Registration → KYC %</label>
+          <input type="number" id="conv2" value="60">
+        </div>
+        <div class="input-group">
+          <label>KYC → First Trade %</label>
+          <input type="number" id="conv3" value="50">
+        </div>
+        <div class="input-group">
+          <label>First Trade → Active Retained %</label>
+          <input type="number" id="conv4" value="70">
+        </div>
+        <div class="input-group">
+          <label>CAC (per trader)</label>
+          <input type="number" id="cac" value="20">
+        </div>
+        <div class="input-group">
+          <label>Avg Revenue per Trader</label>
+          <input type="number" id="revenue" value="100">
+        </div>
+        <div class="input-group">
+          <label>3-Month Retention %</label>
+          <input type="number" id="ret3" value="70">
+        </div>
+        <div class="input-group">
+          <label>6-Month Retention %</label>
+          <input type="number" id="ret6" value="50">
+        </div>
+      </div>
+      <button id="calculate">Update Dashboard</button>
+    </section>
+
+    <!-- Market Sizing Calculator -->
+  <section>
+  <h2>Charts Overview</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <h3>Market Sizing</h3>
+      <canvas id="marketChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Acquisition Funnel</h3>
+      <canvas id="funnelChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Financial Projections</h3>
+      <canvas id="financeChart"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Retention Analysis</h3>
+      <canvas id="retentionChart"></canvas>
+    </div>
+  </div>
+</section>
+
+
+ <!-- <section>
+  <h2>Market Sizing</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <canvas id="marketChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Acquisition Funnel</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <canvas id="funnelChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Financial Projections</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <canvas id="financeChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Retention Analysis</h2>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <canvas id="retentionChart"></canvas>
+    </div>
+  </div>
+</section> -->
+
+    <!-- KPI Dashboard -->
+    <section id="kpis">
+      <h2>KPI Summary</h2>
+      <div class="kpi-grid">
+        <div class="kpi-card"><h3 id="kpi-active">0</h3><p>Active Traders</p></div>
+        <div class="kpi-card"><h3 id="kpi-revenue">0</h3><p>Total Revenue</p></div>
+        <div class="kpi-card"><h3 id="kpi-cost">0</h3><p>Total Cost</p></div>
+        <div class="kpi-card"><h3 id="kpi-ltv">0</h3><p>LTV</p></div>
+        <div class="kpi-card"><h3 id="kpi-cac">0</h3><p>CAC</p></div>
+        <div class="kpi-card"><h3 id="kpi-ratio">0</h3><p>CAC:LTV Ratio</p></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>© 2025 Nubra GTM Dashboard | For internal strategy use only.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
