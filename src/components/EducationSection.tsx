@@ -19,7 +19,7 @@ const education: Education[] = [
     institution: "Vellore Institute of Technology, Vellore",
     level: "Bachelor of Technology – Electronics & Communication Engineering",
     years: "2022 – 2026",
-    grade: "CGPA: 8.51",
+    grade: "CGPA: 8.61",
     description: "Vice Chairperson of Solai Club, led club initiatives and actively participated in hackathons."
   },
   {
