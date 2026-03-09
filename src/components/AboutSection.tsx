@@ -68,7 +68,7 @@ const AboutSection: React.FC = () => {
                 <p className="text-gray-400">Internships</p>
               </div>
                <div className="bg-violet-500/10 rounded-lg p-4 border border-violet-500/20">
-                <h3 className="text-2xl font-bold text-violet-400">3</h3>
+                <h3 className="text-2xl font-bold text-violet-400">4</h3>
                 <p className="text-gray-400">Hackathons Won</p>
               </div>
               
