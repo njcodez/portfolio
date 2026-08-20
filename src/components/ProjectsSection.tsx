@@ -133,7 +133,7 @@ const cardVariants = {
     y: 0,
     scale: 1,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 90,
       damping: 18,
     },
@@ -145,7 +145,7 @@ const headingVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 80, damping: 16 },
+    transition: { type: "spring" as const, stiffness: 80, damping: 16 },
   },
 };
 

@@ -11,7 +11,7 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 85, damping: 18 },
+    transition: { type: "spring" as const, stiffness: 85, damping: 18 },
   },
 };
 
@@ -20,7 +20,7 @@ const statVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { type: "spring", stiffness: 110, damping: 16 },
+    transition: { type: "spring" as const, stiffness: 110, damping: 16 },
   },
 };
 

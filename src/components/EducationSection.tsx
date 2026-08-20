@@ -49,7 +49,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', stiffness: 85, damping: 18 },
+    transition: { type: 'spring' as const, stiffness: 85, damping: 18 },
   },
 };
 
@@ -58,7 +58,7 @@ const headingVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', stiffness: 80, damping: 16 },
+    transition: { type: 'spring' as const, stiffness: 80, damping: 16 },
   },
 };
 
@@ -93,7 +93,7 @@ const EducationSection: React.FC = () => {
             <motion.div
               key={edu.id}
               variants={cardVariants}
-              whileHover={{ y: -3, transition: { type: 'spring', stiffness: 200, damping: 20 } }}
+              whileHover={{ y: -3, transition: { type: 'spring' as const, stiffness: 200, damping: 20 } }}
               className="glass-effect rounded-2xl p-8 neon-glow relative overflow-hidden"
             >
               {/* Background icon */}

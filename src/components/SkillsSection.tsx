@@ -47,7 +47,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', stiffness: 85, damping: 18 },
+    transition: { type: 'spring' as const, stiffness: 85, damping: 18 },
   },
 };
 
@@ -56,7 +56,7 @@ const skillRowVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { type: 'spring', stiffness: 100, damping: 18 },
+    transition: { type: 'spring' as const, stiffness: 100, damping: 18 },
   },
 };
 
@@ -65,7 +65,7 @@ const chipVariants = {
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { type: 'spring', stiffness: 120, damping: 16 },
+    transition: { type: 'spring' as const, stiffness: 120, damping: 16 },
   },
 };
 
@@ -74,7 +74,7 @@ const headingVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', stiffness: 80, damping: 16 },
+    transition: { type: 'spring' as const, stiffness: 80, damping: 16 },
   },
 };
 
@@ -136,7 +136,7 @@ const SkillsSection: React.FC = () => {
                         initial={{ width: 0 }}
                         animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
                         transition={{
-                          type: 'spring',
+                          type: 'spring' as const,
                           stiffness: 55,
                           damping: 18,
                           delay: 0.25,
@@ -172,7 +172,7 @@ const SkillsSection: React.FC = () => {
               <motion.span
                 key={tool}
                 variants={chipVariants}
-                whileHover={{ scale: 1.08, transition: { type: 'spring', stiffness: 200 } }}
+                whileHover={{ scale: 1.08, transition: { type: 'spring' as const, stiffness: 200 } }}
                 className="bg-violet-500/10 text-violet-300 px-4 py-2 rounded-full border border-violet-500/20 hover:border-violet-500/40 transition-colors cursor-default"
               >
                 {tool}

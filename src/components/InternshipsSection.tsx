@@ -50,7 +50,7 @@ const cardVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', stiffness: 80, damping: 17 },
+    transition: { type: 'spring' as const, stiffness: 80, damping: 17 },
   },
 };
 
@@ -59,7 +59,7 @@ const bulletVariants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: { type: 'spring', stiffness: 100, damping: 18 },
+    transition: { type: 'spring' as const, stiffness: 100, damping: 18 },
   },
 };
 
@@ -68,7 +68,7 @@ const headingVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: 'spring', stiffness: 80, damping: 16 },
+    transition: { type: 'spring' as const, stiffness: 80, damping: 16 },
   },
 };
 
@@ -104,7 +104,7 @@ const InternshipsSection: React.FC = () => {
             <motion.div
               key={internship.id}
               variants={cardVariants}
-              whileHover={{ y: -3, transition: { type: 'spring', stiffness: 200, damping: 20 } }}
+              whileHover={{ y: -3, transition: { type: 'spring' as const, stiffness: 200, damping: 20 } }}
               className="glass-effect rounded-2xl p-8 neon-glow"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">

@@ -88,7 +88,7 @@ const Navigation: React.FC = () => {
                     layoutId="activeSection"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-violet-400"
                     initial={false}
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    transition={{ type: "spring" as const, stiffness: 380, damping: 30 }}
                   />
                 )}
               </button>

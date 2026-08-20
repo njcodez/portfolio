@@ -42,7 +42,7 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { type: "spring", stiffness: 85, damping: 17 },
+    transition: { type: "spring" as const, stiffness: 85, damping: 17 },
   },
 };
 
@@ -51,7 +51,7 @@ const headingVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 80, damping: 16 },
+    transition: { type: "spring" as const, stiffness: 80, damping: 16 },
   },
 };
 
@@ -92,7 +92,7 @@ const HackathonSection: React.FC = () => {
                 variants={cardVariants}
                 whileHover={{
                   y: -6,
-                  transition: { type: "spring", stiffness: 200, damping: 18 },
+                  transition: { type: "spring" as const, stiffness: 200, damping: 18 },
                 }}
                 className={`glass-effect neon-glow rounded-2xl overflow-hidden ${
                   isCenter
