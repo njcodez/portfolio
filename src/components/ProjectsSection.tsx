@@ -27,26 +27,17 @@ const projects: Project[] = [
     technologies: ["Next.js", "Tailwind CSS"],
     link: "https://v-front.vercel.app",
   },
+  
   {
-    id: 2,
-    title: "Smart Automated Irrigation System",
-    description:
-      "Led the design of an IoT-driven irrigation solution leveraging climate and soil moisture data to optimize water usage. Published research demonstrating significant improvements in agricultural efficiency.",
-    type: "Research",
-    technologies: ["IoT", "ThingSpeak", "DHT11", "Arduino", "Python"],
-    link: "https://doi.org/10.1109/AIIoT58432.2024.10574611",
-    published: true,
-  },
-  {
-    id: 3,
-    title: "OTT Platform Development",
-    description:
-      "Led the full-stack development of a scalable OTT streaming platform with an integrated admin panel, ensuring seamless user experience and efficient content management.",
-    type: "Experience",
-    technologies: ["Next.js", "Prisma", "Vercel", "JavaScript", "PostgreSQL"],
-    link: "https://rctv.in",
-    featured: true,
-  },
+  id: 10,
+  title: "Paste2PDF",
+  description:
+    "Built a privacy-focused browser tool for converting screenshots and images into PDFs entirely on the client side, with drag-and-drop page reordering, previews, custom page sizes, and local data persistence.",
+  type: "Personal",
+  technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "pdf-lib"],
+  link: "https://paste2pdf.vercel.app",
+  featured: true,
+},
   {
   id: 6,
   title: "GymFlow",
@@ -67,6 +58,26 @@ const projects: Project[] = [
   link: "https://akinfra.vercel.app",
   featured: true,
 },
+  {
+    id: 2,
+    title: "Smart Automated Irrigation System",
+    description:
+      "Led the design of an IoT-driven irrigation solution leveraging climate and soil moisture data to optimize water usage. Published research demonstrating significant improvements in agricultural efficiency.",
+    type: "Research",
+    technologies: ["IoT", "ThingSpeak", "DHT11", "Arduino", "Python"],
+    link: "https://doi.org/10.1109/AIIoT58432.2024.10574611",
+    published: true,
+  },
+    {
+    id: 3,
+    title: "OTT Platform Development",
+    description:
+      "Led the full-stack development of a scalable OTT streaming platform with an integrated admin panel, ensuring seamless user experience and efficient content management.",
+    type: "Experience",
+    technologies: ["Next.js", "Prisma", "Vercel", "JavaScript", "PostgreSQL"],
+    link: "https://rctv.in",
+    featured: true,
+  },
  
   {
     id: 72,
