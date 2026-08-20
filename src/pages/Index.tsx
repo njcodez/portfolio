@@ -38,7 +38,7 @@ const Index = () => {
       <footer className="relative z-10 py-8 border-t border-violet-500/20">
         <div className="container mx-auto px-6 text-center">
           <p className="text-gray-400">
-            © 2024 Neeraj Srinivasan. Built with React, TypeScript & Framer Motion.
+            © 2026 Neeraj Srinivasan. Built with React, TypeScript & Framer Motion.
           </p>
         </div>
       </footer>

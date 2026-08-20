@@ -1,8 +1,6 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { GraduationCap } from 'lucide-react';
 
 interface Education {
@@ -13,6 +11,7 @@ interface Education {
   grade: string;
   description: string;
 }
+
 const education: Education[] = [
   {
     id: 1,
@@ -40,18 +39,40 @@ const education: Education[] = [
   }
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.13 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 26 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 85, damping: 18 },
+  },
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 80, damping: 16 },
+  },
+};
 
 const EducationSection: React.FC = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <section ref={ref} className="py-20 relative" id="education">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
+          variants={headingVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
@@ -62,54 +83,56 @@ const EducationSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          {education.map((edu, index) => (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="max-w-4xl mx-auto space-y-8"
+        >
+          {education.map((edu) => (
             <motion.div
               key={edu.id}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="mb-8 last:mb-0"
+              variants={cardVariants}
+              whileHover={{ y: -3, transition: { type: 'spring', stiffness: 200, damping: 20 } }}
+              className="glass-effect rounded-2xl p-8 neon-glow relative overflow-hidden"
             >
-              <div className="glass-effect rounded-2xl p-8 neon-glow hover:scale-[1.02] transition-all duration-300 relative overflow-hidden">
-                {/* Background decoration */}
-                <div className="absolute top-4 right-4 opacity-10">
-                  <GraduationCap className="w-16 h-16 text-violet-400" />
-                </div>
-                
-                <div className="relative z-10">
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-white mb-2">
-                        {edu.institution}
-                      </h3>
-                      <p className="text-violet-400 font-semibold mb-1">
-                        {edu.level}
-                      </p>
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-gray-400">
-                        <span className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-violet-500 rounded-full"></div>
-                          {edu.years}
-                        </span>
-                        <span className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                          {edu.grade}
-                        </span>
-                      </div>
+              {/* Background icon */}
+              <div className="absolute top-4 right-4 opacity-10 pointer-events-none">
+                <GraduationCap className="w-16 h-16 text-violet-400" />
+              </div>
+
+              <div className="relative z-10">
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-2">
+                      {edu.institution}
+                    </h3>
+                    <p className="text-violet-400 font-semibold mb-1">
+                      {edu.level}
+                    </p>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-gray-400">
+                      <span className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-violet-500 rounded-full" />
+                        {edu.years}
+                      </span>
+                      <span className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-cyan-400 rounded-full" />
+                        {edu.grade}
+                      </span>
                     </div>
                   </div>
-                  
-                  <p className="text-gray-300 leading-relaxed">
-                    {edu.description}
-                  </p>
                 </div>
-                
-                {/* Gradient border effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-violet-500/20 via-transparent to-cyan-400/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+
+                {edu.description && (
+                  <p className="text-gray-300 leading-relaxed">{edu.description}</p>
+                )}
               </div>
+
+              {/* Hover gradient overlay */}
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-violet-500/20 via-transparent to-cyan-400/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

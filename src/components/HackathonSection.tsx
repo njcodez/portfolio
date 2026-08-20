@@ -31,17 +31,41 @@ const hackathons: Hackathon[] = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { type: "spring", stiffness: 85, damping: 17 },
+  },
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 80, damping: 16 },
+  },
+};
+
 const HackathonSection: React.FC = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
     <section ref={ref} className="py-20 relative" id="hackathons">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
+          variants={headingVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
@@ -53,25 +77,28 @@ const HackathonSection: React.FC = () => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="flex flex-col md:flex-row justify-center items-center gap-6"
+        >
           {hackathons.map((hack, index) => {
             const isCenter = index === 1;
 
             return (
               <motion.div
                 key={hack.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={
-                  isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-                }
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-               className={`glass-effect neon-glow rounded-2xl overflow-hidden transition-all duration-300 ${
-  isCenter
-    ? "scale-105 md:scale-110 shadow-xl z-10"
-    : "scale-95 md:scale-100"
-} w-full md:w-1/4`}
-
-
+                variants={cardVariants}
+                whileHover={{
+                  y: -6,
+                  transition: { type: "spring", stiffness: 200, damping: 18 },
+                }}
+                className={`glass-effect neon-glow rounded-2xl overflow-hidden ${
+                  isCenter
+                    ? "scale-105 md:scale-110 shadow-xl z-10"
+                    : "scale-95 md:scale-100"
+                } w-full md:w-1/4`}
               >
                 <img
                   src={hack.image}
@@ -89,7 +116,7 @@ const HackathonSection: React.FC = () => {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

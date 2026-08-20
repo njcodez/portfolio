@@ -1,8 +1,6 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 interface Internship {
   id: number;
@@ -42,36 +40,72 @@ const internships: Internship[] = [
   }
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 80, damping: 17 },
+  },
+};
+
+const bulletVariants = {
+  hidden: { opacity: 0, x: -14 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring', stiffness: 100, damping: 18 },
+  },
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 80, damping: 16 },
+  },
+};
+
 const InternshipsSection: React.FC = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <section ref={ref} className="py-20 relative" id="internships">
       <div className="container mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 0.8 }}
+          variants={headingVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold gradient-text mb-6">
             Professional Experience
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Practical experience gained through internships in software development 
+            Practical experience gained through internships in software development
             and technology innovation.
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto space-y-8">
-          {internships.map((internship, index) => (
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="max-w-4xl mx-auto space-y-8"
+        >
+          {internships.map((internship) => (
             <motion.div
               key={internship.id}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="glass-effect rounded-2xl p-8 neon-glow hover:scale-[1.02] transition-all duration-300"
+              variants={cardVariants}
+              whileHover={{ y: -3, transition: { type: 'spring', stiffness: 200, damping: 20 } }}
+              className="glass-effect rounded-2xl p-8 neon-glow"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
                 <div>
@@ -86,33 +120,34 @@ const InternshipsSection: React.FC = () => {
                   </p>
                 </div>
               </div>
-              
+
               <p className="text-gray-300 mb-6 leading-relaxed">
                 {internship.description}
               </p>
-              
+
               <div>
                 <h5 className="text-lg font-semibold text-violet-400 mb-4">
-                  Key Learnings & Achievements:
+                  Key Learnings &amp; Achievements:
                 </h5>
-                <ul className="space-y-2">
+                <motion.ul
+                  variants={containerVariants}
+                  className="space-y-2"
+                >
                   {internship.keyLearnings.map((learning, learningIndex) => (
                     <motion.li
                       key={learningIndex}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                      transition={{ duration: 0.5, delay: (index * 0.2) + (learningIndex * 0.1) }}
+                      variants={bulletVariants}
                       className="flex items-start space-x-3 text-gray-300"
                     >
-                      <div className="w-2 h-2 bg-violet-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-violet-400 rounded-full mt-2 flex-shrink-0" />
                       <span>{learning}</span>
                     </motion.li>
                   ))}
-                </ul>
+                </motion.ul>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

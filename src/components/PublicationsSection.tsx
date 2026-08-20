@@ -23,7 +23,7 @@ const publications: Publication[] = [
     title: "IoT and Cloud based Automated Irrigation System",
     journal: "2024 3rd International Conference on Artificial Intelligence For Internet of Things (AIIoT)",
     year: "2024",
-    authors: "Neeraj [Your Last Name]",
+    authors: "Neeraj Srinivasan",
     abstract: [
       "Integrated soil moisture sensors, water level detectors, and weather prediction APIs for real-time irrigation control.",
       "Utilized cloud services to collect and analyze sensor data for smart decision-making.",
